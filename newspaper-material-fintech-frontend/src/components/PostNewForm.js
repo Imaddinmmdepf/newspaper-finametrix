@@ -107,7 +107,8 @@ const  PostNewForm = ({classes, ...props}) => {
                 label="Description"
                 fullWidth
                 multiline
-                rows={4}
+                rows={10
+                }
                 value = {values.description}
                 onChange={handleInputChange}
                 {...(errors.description && {error:true, helperText:errors.description})}
@@ -127,7 +128,9 @@ const  PostNewForm = ({classes, ...props}) => {
                 <MenuItem value={"Deportes"}>Deportes</MenuItem>
                 <MenuItem value={"Economia"}>Economia</MenuItem>
                 <MenuItem value={"TIC"}>TIC</MenuItem>
+                <MenuItem value={"Salud"}>Salud</MenuItem>
                 <MenuItem value={"Otros"}>Otros</MenuItem>
+
             </Select>  
             <TextField
                 name="author"

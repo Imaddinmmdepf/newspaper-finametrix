@@ -71,10 +71,10 @@ router.post('/archived/:id', (req, res) => {
 });
 
 router.get('/archived', (req, res) => {
-    archivedNewModel.find((err, doc) => {
+    archivedNewModel.find().sort([['archivedAt', 'descending']]).exec((err, doc) => {
         if(!err) res.send(doc)
         else console.log('Error while retrieving all resources' + JSON.stringify(err, undefined, 2));   
-    })
+    });
 })
 
 function createApost(req) {
