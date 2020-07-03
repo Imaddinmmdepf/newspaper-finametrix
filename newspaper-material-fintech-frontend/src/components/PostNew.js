@@ -7,6 +7,8 @@ import ArchiveIcon from '@material-ui/icons/Archive';
 import ButterToast, {Cinnamon} from "butter-toast";
 import { AssignmentTurnedIn } from '@material-ui/icons';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Moment from 'react-moment';
+import { makeStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     paper : {
@@ -26,13 +28,23 @@ const styleButton = {
     height: 48,
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  };
+};
+  const useStyles = makeStyles((theme) => ({
+    markdown: {
+      padding: theme.spacing(0, 3),
+    },
+    markDownArchivedAt: {
+        padding: theme.spacing(3, 0),
+    }
+  }));
   
-
+                                                                                                                        
 //props.classes.paper
 
 const PostNew = ({classes, ...props}) => {
-    const [currentId, setCurrentId] = useState(0)
+
+    const classesStyle = useStyles();
+    const [currentId, setCurrentId] = useState(0);
 
     useEffect(() => {
         if(props.normalPost) {
@@ -105,33 +117,26 @@ const PostNew = ({classes, ...props}) => {
                                             <Typography variant="h5">
                                                 {record.title}
                                             </Typography>
-                                            <Typography variant="subtitle">
-                                                Tema:       {record.contentType}
+                                            <Typography   style={{display: 'inline-block'}} className={classesStyle.markdown} variant="caption" display="block" gutterBottom>
+                                                Content:  {record.contentType}
                                             </Typography>   
-                                            <Typography variant="subtitle">
-                                                {record.author}
+                                            <Typography  style={{display: 'inline-block' }}className={classesStyle.markdown}  variant="caption" display="block" gutterBottom>
+                                                Author: {record.author}
                                             </Typography>
-                                            <Typography variant="subtitle">
-                                                date: {record.createdAt.toString()}
+                                            <Typography   style={{display: 'inline-block', align:"right"}} className={classesStyle.markdown} variant="caption" display="block" gutterBottom>
+                                                posted:  <Moment format="YYYY/MM/DD hh:mm:ss">{record.createdAt}</Moment>
                                             </Typography>
                                             <Divider/>
-                                            <div>
+                                            <Typography>
                                                 {record.description}
-                                            </div>
-                                            
+                                            </Typography >
+                                                
                                                 {
-                                                    props.normalPost ? (
-                                                        <div></div>
-                                                    ):(
-                                                        <div>
-                                                            archivedAt: 
-                                                        </div>
-                                                    )
-
+                                                    props.normalPost ? (<div></div>):(<Typography  variant="caption"  gutterBottom className={classesStyle.markDownArchivedAt}>  archivedAt: <Moment format="YYYY/MM/DD">{record.createdAt}</Moment></Typography>)
                                                 }
                                             
                                             <div className={classes.actionDiv}>
-                                                { props.normalPost ? (                                                
+                                                {props.normalPost ? (                                                
                                                     <div>
                                                     <Button variant="contained" color="primary" size="small" 
                                                     className={classes.smMargin} 

@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 import * as actions from "../actions/postNew"
 import ButterToast, {Cinnamon} from "butter-toast"
 import {AssignmentTurnedIn} from "@material-ui/icons"
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 
 const styles = theme => ({
@@ -73,12 +76,12 @@ const  PostNewForm = ({classes, ...props}) => {
                 icon={<AssignmentTurnedIn/>}
 
             />
-            })
-            resetForm()     
+            });
+            resetForm();     
         }
         if(validate()){
             if(props.currentId == 0)
-               props.createPostNew(values, onSuccess)
+                props.createPostNew(values, onSuccess)
             else{
                 props.updatePostNew(props.currentId, values, onSuccess)
             }
@@ -110,17 +113,22 @@ const  PostNewForm = ({classes, ...props}) => {
                 {...(errors.description && {error:true, helperText:errors.description})}
 
             />
-            <TextField
+  
+          <InputLabel><div style={{ padding : 10}}>Content</div></InputLabel>
+            <Select
                 name="contentType"
                 variant="outlined"
-                label="Content"
+                style={{margin: 5}}
                 fullWidth
-                multiline
-                value = {values.contentType}
+                value={values.contentType}
                 onChange={handleInputChange}
-                {...(errors.content && {error:true, helperText:errors.content})}
-
-            />
+            >
+                <MenuItem value={"Politica"}>Politica</MenuItem>
+                <MenuItem value={"Deportes"}>Deportes</MenuItem>
+                <MenuItem value={"Economia"}>Economia</MenuItem>
+                <MenuItem value={"TIC"}>TIC</MenuItem>
+                <MenuItem value={"Otros"}>Otros</MenuItem>
+            </Select>  
             <TextField
                 name="author"
                 variant="outlined"

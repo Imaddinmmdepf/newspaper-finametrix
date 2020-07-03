@@ -20,7 +20,7 @@ export const postNew = (state = initialState, action) => {
             return {
                 ...state,
                 list: state.list.map(x => x._id == action.payload._id ? action.payload : x)
-            }
+            }   
 
         case ACTION_TYPES.DELETE:
             return {
