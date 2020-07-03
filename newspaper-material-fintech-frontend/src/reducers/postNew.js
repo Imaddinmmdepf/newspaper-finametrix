@@ -19,13 +19,13 @@ export const postNew = (state = initialState, action) => {
         case ACTION_TYPES.UPDATE:
             return {
                 ...state,
-                list: state.list.map(x => x._id == action.payload._id ? action.payload : x)
+                list: state.list.map(x => x._id === action.payload._id ? action.payload : x)
             }   
 
         case ACTION_TYPES.DELETE:
             return {
                 ...state,
-                list:state.list.filter(x => x._id != action.payload)
+                list:state.list.filter(x => x._id !== action.payload)
             }
 
         case ACTION_TYPES.ARCHIVE:

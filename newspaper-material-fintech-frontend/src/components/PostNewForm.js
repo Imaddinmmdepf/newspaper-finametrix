@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect} from 'react';
 import { TextField, withStyles, Button } from '@material-ui/core';
 import useForm from './useForm';
 import {connect} from 'react-redux';
@@ -38,9 +38,9 @@ const initialFieldValues = {
 const  PostNewForm = ({classes, ...props}) => {
 
     useEffect(() => {
-        if (props.currentId != 0){
+        if (props.currentId !== 0){
             setValues({
-                ...props.postNewList.find(x => x._id == props.currentId)
+                ...props.postNewList.find(x => x._id === props.currentId)
             })
             setErrors({})
         }
@@ -55,7 +55,7 @@ const  PostNewForm = ({classes, ...props}) => {
         setErrors({
             ...temp
         });
-        return Object.values(temp).every(x => x == "")
+        return Object.values(temp).every(x => x === "")
     }
     let {
         values, 
@@ -80,7 +80,7 @@ const  PostNewForm = ({classes, ...props}) => {
             resetForm();     
         }
         if(validate()){
-            if(props.currentId == 0)
+            if(props.currentId === 0)
                 props.createPostNew(values, onSuccess)
             else{
                 props.updatePostNew(props.currentId, values, onSuccess)
