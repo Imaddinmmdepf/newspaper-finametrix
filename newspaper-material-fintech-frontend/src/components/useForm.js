@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { useState} from 'react';
-=======
-import {useState} from 'react';
->>>>>>> ba7e30a72e6a4f5b4f0bee7986dad61a4ce1a1d2
+
 
 const useForm = (initialFieldValues, setCurrentId) => {
     
