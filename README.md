@@ -4,16 +4,17 @@
 
 To be able to execute this project you must have the **ports 3000** and **4000** of the computer on which you are running the project.
 
-> Instructions of the execution:
+> Installation:
 
 ```
 npm install (in both directories)
 ```
-Frontend:
+
+> Frontend Exec:
 ```
 npm start 
 ```
-Backend:
+> Backend Exec:
 ```
 npm run devStart 
 ```
