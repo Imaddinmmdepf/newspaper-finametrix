@@ -38,7 +38,7 @@ const styleButton = {
     }
   }));
   
-                                                                                                                        
+
 //props.classes.paper
 
 const PostNew = ({classes, ...props}) => {
@@ -46,17 +46,15 @@ const PostNew = ({classes, ...props}) => {
     const classesStyle = useStyles();
     const [currentId, setCurrentId] = useState(0);
 
-    useEffect(() => {
+    useEffect((props) => {
         if(props.normalPost) {
             props.fetchAllPostNews()
         }else{
-            console.log("imadinnnnnnn");
             props.fetchAllArchivedNews()
         }
     }, []);//DidMount 
     
     const onArchive = (id) => {
-        console.log("Boton de archivado")
         const onSuccess = () => {
             ButterToast.raise({
                 content: <Cinnamon.Crisp title="Rost Box"
